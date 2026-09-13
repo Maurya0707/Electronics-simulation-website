@@ -41,6 +41,9 @@ class SimulinkStudyhubApp {
 
     // Load initial experiment
     this.loadExperiment('ohms-law');
+
+    // Setup URL hash routing for simulation/theory/viva tabs and modals
+    this.handleRouting();
   }
 
   setupNavigation() {
@@ -86,12 +89,39 @@ class SimulinkStudyhubApp {
         const tab = btn.getAttribute('data-tab');
         if (tab) {
           this.switchTab(tab);
+          // Update URL hash without jumping
+          if (history.replaceState) {
+            history.replaceState(null, '', `#${tab}`);
+          } else {
+            window.location.hash = tab;
+          }
           // Close mobile menu if open
           const navMenu = document.getElementById('navbar-menu');
           if (navMenu) navMenu.classList.remove('show');
         }
       });
     });
+  }
+
+  handleRouting() {
+    const applyHash = () => {
+      const hash = window.location.hash.replace('#', '').toLowerCase();
+      if (['simulation', 'theory', 'viva'].includes(hash)) {
+        this.switchTab(hash);
+      } else if (hash === 'manual') {
+        const modal = document.getElementById('user-manual-modal');
+        if (modal) modal.classList.add('show');
+      } else if (hash === 'report') {
+        this.populateReport();
+        const modal = document.getElementById('report-modal');
+        if (modal) modal.classList.add('show');
+      }
+    };
+
+    window.addEventListener('hashchange', applyHash);
+    if (window.location.hash) {
+      applyHash();
+    }
   }
 
   switchTab(tab) {
@@ -645,6 +675,45 @@ class SimulinkStudyhubApp {
         } else {
           document.exitFullscreen().catch(() => {});
         }
+      });
+    }
+
+    // Quick Step Guide button in sub-bar
+    const quickGuideBtn = document.getElementById('btn-quick-guide');
+    if (quickGuideBtn) {
+      quickGuideBtn.addEventListener('click', () => {
+        const guideCard = document.getElementById('simulation-guide-container');
+        if (guideCard) {
+          guideCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          const stepsBody = document.getElementById('guide-steps-body');
+          if (stepsBody) stepsBody.style.display = 'grid';
+          const chevron = document.getElementById('guide-chevron');
+          if (chevron) chevron.className = 'fas fa-chevron-up';
+        }
+      });
+    }
+
+    // Mobile drawer action links
+    const mobileUserManualBtn = document.getElementById('mobile-btn-user-manual');
+    if (mobileUserManualBtn) {
+      mobileUserManualBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const userManualModal = document.getElementById('user-manual-modal');
+        if (userManualModal) userManualModal.classList.add('show');
+        const navMenu = document.getElementById('navbar-menu');
+        if (navMenu) navMenu.classList.remove('show');
+      });
+    }
+
+    const mobileLabReportBtn = document.getElementById('mobile-btn-lab-report');
+    if (mobileLabReportBtn) {
+      mobileLabReportBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.populateReport();
+        const reportModal = document.getElementById('report-modal');
+        if (reportModal) reportModal.classList.add('show');
+        const navMenu = document.getElementById('navbar-menu');
+        if (navMenu) navMenu.classList.remove('show');
       });
     }
 
