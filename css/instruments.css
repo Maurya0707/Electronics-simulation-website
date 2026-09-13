@@ -1,0 +1,330 @@
+/**
+ * Simulink X Studyhub - Virtual Test Instruments Styling (Gradients & Responsive)
+ * Developed by Aditya Maurya
+ */
+
+/* ==========================================================================
+   INSTRUMENTS CHASSIS & SCREEN CONTAINERS
+   ========================================================================== */
+.instrument-card {
+  background: var(--grad-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 1.5rem;
+  transition: var(--transition);
+}
+
+.instrument-card:hover {
+  border-color: rgba(0, 242, 254, 0.35);
+  box-shadow: var(--shadow-glow);
+}
+
+.instrument-card-header {
+  background: rgba(13, 21, 39, 0.95);
+  padding: 0.85rem 1.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.instrument-title {
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text-main);
+}
+
+.screen-wrapper {
+  position: relative;
+  background: #040811;
+  width: 100%;
+  min-height: 360px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+canvas.instrument-canvas {
+  width: 100%;
+  height: 380px;
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* ==========================================================================
+   DIGITAL STORAGE OSCILLOSCOPE (DSO) CONTROL BAR
+   ========================================================================== */
+.dso-controls-bar {
+  background: linear-gradient(180deg, #0d1527 0%, #080d18 100%);
+  padding: 0.85rem 1.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  border-top: 1px solid rgba(56, 189, 248, 0.15);
+}
+
+.dso-channel-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.channel-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+}
+
+.ch1-tag {
+  color: #fde047;
+  background: rgba(253, 224, 71, 0.12);
+  border: 1px solid rgba(253, 224, 71, 0.4);
+}
+
+.ch2-tag {
+  color: #00f2fe;
+  background: rgba(0, 242, 254, 0.12);
+  border: 1px solid rgba(0, 242, 254, 0.4);
+}
+
+.dso-knob-select {
+  background: var(--bg-tertiary);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-family: var(--font-mono);
+  outline: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.dso-knob-select:focus {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 2px rgba(0, 242, 254, 0.2);
+}
+
+/* ==========================================================================
+   DIGITAL MULTIMETER (DMM) COMPONENT
+   ========================================================================== */
+.dmm-wrapper {
+  background: linear-gradient(145deg, #1e2c44 0%, #131c2d 100%);
+  border: 3px solid #f59e0b; /* Rugged High-Impact Holster */
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), inset 0 0 15px rgba(0, 0, 0, 0.5);
+  max-width: 100%;
+  margin-top: 1.5rem;
+}
+
+.dmm-brand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #cbd5e1;
+  margin-bottom: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.dmm-display-bezel {
+  background: #03070d;
+  border: 2px solid #334155;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  position: relative;
+  box-shadow: inset 0 3px 12px rgba(0, 0, 0, 0.9);
+}
+
+.dmm-lcd-screen {
+  background: linear-gradient(180deg, #091922 0%, #030b10 100%);
+  border: 1px solid #0e7490;
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  box-shadow: inset 0 0 16px rgba(0, 242, 254, 0.2);
+}
+
+.dmm-readout {
+  font-family: var(--font-mono);
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #38bdf8;
+  text-shadow: 0 0 12px rgba(56, 189, 248, 0.75);
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.dmm-unit {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.dmm-top-status {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: #64748b;
+  margin-bottom: 0.4rem;
+}
+
+.dmm-badge {
+  background: #334155;
+  color: #f8fafc;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 800;
+}
+
+/* DMM Mode Selector Buttons */
+.dmm-dial-panel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+
+.dmm-mode-btn {
+  background: var(--bg-tertiary);
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  padding: 0.55rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.dmm-mode-btn:hover {
+  background: #223452;
+  color: #ffffff;
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
+.dmm-mode-btn.active {
+  background: var(--grad-cyan);
+  color: #070d18;
+  border-color: #00f2fe;
+  box-shadow: 0 0 14px rgba(0, 242, 254, 0.5);
+}
+
+/* DMM Banana Probe Sockets */
+.dmm-probe-ports {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(56, 189, 248, 0.15);
+}
+
+.probe-port {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.port-jack {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 3px solid #000000;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8);
+}
+
+.port-jack.red { background: #ef4444; }
+.port-jack.black { background: #1e293b; border-color: #0f172a; }
+
+.port-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #94a3b8;
+  font-family: var(--font-mono);
+}
+
+/* ==========================================================================
+   VIEW SWITCHER TABS (CIRCUIT / DSO / GRAPH)
+   ========================================================================== */
+.view-switcher-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-tertiary);
+  padding: 0.35rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+.view-toggle-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.45rem 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.view-toggle-btn:hover {
+  color: var(--text-main);
+}
+
+.view-toggle-btn.active {
+  background: var(--bg-secondary);
+  color: var(--accent-cyan);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 242, 254, 0.25);
+}
+
+@media (max-width: 768px) {
+  .instrument-card-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .view-switcher-bar {
+    justify-content: center;
+  }
+  .dso-controls-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .dso-channel-group {
+    justify-content: space-between;
+  }
+  canvas.instrument-canvas {
+    height: 280px;
+  }
+}

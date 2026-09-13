@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulink X Studyhub - B.Tech Electronics Circuit Simulation Lab</title>
+  <meta name="description" content="Simulink X Studyhub: Practical real-life electronics circuit simulation platform for B.Tech engineering experiments with full circuit logic. Developed by Aditya Maurya.">
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/instruments.css">
+  <link rel="stylesheet" href="css/experiments.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       SITE HEADER & NAVBAR (Simulink X Studyhub)
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="header-container">
+      <!-- Brand Logo & Name -->
+      <a href="#" class="brand-logo">
+        <div class="brand-icon">
+          <i class="fas fa-wave-square"></i>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Simulink X Studyhub</span>
+          <span class="brand-tagline">B.Tech Engineering Virtual Circuit Lab</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="header-nav" id="navbar-menu">
+        <a href="#simulation" class="nav-link active tab-nav-trigger" data-tab="simulation">
+          <i class="fas fa-microchip"></i> Simulation Lab
+        </a>
+        <a href="#theory" class="nav-link tab-nav-trigger" data-tab="theory">
+          <i class="fas fa-book-reader"></i> Lab Manual & Theory
+        </a>
+        <a href="#viva" class="nav-link tab-nav-trigger" data-tab="viva">
+          <i class="fas fa-graduation-cap"></i> Viva Voce & Quiz
+        </a>
+        <a href="#" id="btn-open-user-manual" class="nav-link">
+          <i class="fas fa-compass"></i> User Manual Guide
+        </a>
+        <button id="btn-generate-report" class="btn btn-sm btn-outline">
+          <i class="fas fa-file-invoice"></i> Lab Report
+        </button>
+      </nav>
+
+      <!-- Experiment Switcher & Actions -->
+      <div class="header-actions">
+        <div class="exp-selector-wrap">
+          <select id="experiment-selector" aria-label="Select B.Tech Experiment">
+            <optgroup label="Basic Electrical & Electronics">
+              <option value="ohms-law">Exp 1: Ohm's Law & Circuit Analysis</option>
+            </optgroup>
+            <optgroup label="Solid State Devices">
+              <option value="diode-char">Exp 2: PN Junction & Zener Diode</option>
+              <option value="rectifier">Exp 3: Half & Full-Wave Rectifiers</option>
+              <option value="transistor-ce">Exp 4: BJT CE Characteristics</option>
+            </optgroup>
+            <optgroup label="Signals & Integrated Circuits">
+              <option value="rc-filter">Exp 5: RC Filters & Bode Plot</option>
+              <option value="opamp">Exp 6: Op-Amp 741 Inverting/Non-Inv</option>
+              <option value="timer-555">Exp 8: IC 555 Astable Multivibrator</option>
+            </optgroup>
+            <optgroup label="Digital Electronics">
+              <option value="logic-gates">Exp 7: Digital Logic Gates & ICs</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <button id="btn-fullscreen-toggle" class="btn btn-sm btn-secondary" title="Toggle Fullscreen">
+          <i class="fas fa-expand"></i>
+        </button>
+
+        <button class="navbar-toggle-btn" id="navbar-toggle" aria-label="Toggle Navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       MAIN CONTENT CONTAINER
+       ========================================================================== -->
+  <main class="main-wrapper">
+    <!-- Active Experiment Banner -->
+    <div class="exp-banner">
+      <div class="exp-banner-left">
+        <span id="exp-category-badge" class="exp-category-tag">Basic Electrical & Electronics</span>
+        <h2 id="exp-header-title" class="exp-main-title">Verification of Ohm's Law and Circuit Analysis</h2>
+      </div>
+      <div class="exp-banner-right">
+        <span class="badge badge-live">
+          <i class="fas fa-circle"></i> REAL-TIME SIMULATOR ACTIVE
+        </span>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="tabs-navigation">
+      <button class="tab-btn active" data-tab="simulation">
+        <i class="fas fa-desktop"></i> Virtual Workbench & Instruments
+      </button>
+      <button class="tab-btn" data-tab="theory">
+        <i class="fas fa-scroll"></i> Lab Manual & Formula Sheet
+      </button>
+      <button class="tab-btn" data-tab="viva">
+        <i class="fas fa-question-circle"></i> Viva Voce & Conceptual Quiz
+      </button>
+    </div>
+
+    <!-- TAB 1: VIRTUAL WORKBENCH (SIMULATION) -->
+    <section class="tab-pane active" id="tab-simulation">
+      <div class="workbench-layout">
+        
+        <!-- LEFT COLUMN: MULTI-VIEW INSTRUMENTS & SCHEMATICS -->
+        <div class="workbench-left">
+          <div class="instrument-card">
+            <!-- Card Header with View Switcher -->
+            <div class="instrument-card-header">
+              <div class="instrument-title">
+                <i class="fas fa-laptop-code highlight-cyan"></i>
+                <span>Workbench Display</span>
+              </div>
+              <div class="view-switcher-bar">
+                <button class="view-toggle-btn active" data-view="circuit">
+                  <i class="fas fa-project-diagram"></i> Circuit Schematic
+                </button>
+                <button class="view-toggle-btn" data-view="oscilloscope">
+                  <i class="fas fa-wave-square"></i> Dual-Trace DSO
+                </button>
+                <button class="view-toggle-btn" data-view="graph">
+                  <i class="fas fa-chart-line"></i> X-Y Plotter
+                </button>
+              </div>
+            </div>
+
+            <!-- VIEW 1: ANIMATED CIRCUIT SCHEMATIC -->
+            <div id="view-circuit" class="screen-wrapper">
+              <canvas id="circuit-canvas" class="instrument-canvas"></canvas>
+            </div>
+
+            <!-- VIEW 2: DUAL-CHANNEL DIGITAL STORAGE OSCILLOSCOPE (DSO) -->
+            <div id="view-oscilloscope" class="screen-wrapper" style="display: none;">
+              <canvas id="dso-canvas" class="instrument-canvas"></canvas>
+            </div>
+
+            <!-- VIEW 3: SCIENTIFIC GRAPH PLOTTER -->
+            <div id="view-graph" class="screen-wrapper" style="display: none;">
+              <canvas id="graph-canvas" class="instrument-canvas"></canvas>
+            </div>
+
+            <!-- Oscilloscope Control Bar -->
+            <div class="dso-controls-bar" style="display: none;">
+              <div class="dso-channel-group">
+                <div class="channel-indicator ch1-tag">
+                  <i class="fas fa-circle"></i> CH1 (Vin)
+                </div>
+                <select id="dso-ch1-vdiv" class="dso-knob-select" title="CH1 Volts/Div">
+                  <option value="0.5">0.5 V/div</option>
+                  <option value="1.0">1.0 V/div</option>
+                  <option value="2.0" selected>2.0 V/div</option>
+                  <option value="5.0">5.0 V/div</option>
+                  <option value="10.0">10.0 V/div</option>
+                </select>
+              </div>
+
+              <div class="dso-channel-group">
+                <div class="channel-indicator ch2-tag">
+                  <i class="fas fa-circle"></i> CH2 (Vout)
+                </div>
+                <select id="dso-ch2-vdiv" class="dso-knob-select" title="CH2 Volts/Div">
+                  <option value="0.5">0.5 V/div</option>
+                  <option value="1.0">1.0 V/div</option>
+                  <option value="2.0" selected>2.0 V/div</option>
+                  <option value="5.0">5.0 V/div</option>
+                  <option value="10.0">10.0 V/div</option>
+                </select>
+              </div>
+
+              <div class="dso-channel-group">
+                <span class="text-muted" style="font-size: 0.82rem; font-family: var(--font-mono);">TIMEBASE:</span>
+                <select id="dso-timebase-select" class="dso-knob-select" title="Timebase">
+                  <option value="0.0005">0.5 ms/div</option>
+                  <option value="0.001">1.0 ms/div</option>
+                  <option value="0.002">2.0 ms/div</option>
+                  <option value="0.005" selected>5.0 ms/div</option>
+                  <option value="0.01">10.0 ms/div</option>
+                  <option value="0.02">20.0 ms/div</option>
+                </select>
+              </div>
+
+              <button id="dso-run-btn" class="btn btn-sm btn-outline-warning">
+                <i class="fas fa-pause"></i> STOP
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP-BY-STEP USER MANUAL SIMULATION GUIDE -->
+          <div id="simulation-guide-container">
+            <!-- Populated dynamically by app.renderStepByStepGuide() -->
+          </div>
+
+          <!-- OBSERVATION LOGGING TABLE -->
+          <div class="table-card">
+            <div class="table-header">
+              <h4><i class="fas fa-table highlight-cyan"></i> Experimental Observation Table</h4>
+              <div class="d-flex gap-2">
+                <button id="btn-export-csv" class="btn btn-sm btn-secondary">
+                  <i class="fas fa-file-csv"></i> Export CSV
+                </button>
+                <button id="btn-download-graph" class="btn btn-sm btn-secondary">
+                  <i class="fas fa-camera"></i> Save Graph
+                </button>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="observation-table">
+                <thead id="table-head">
+                  <!-- Dynamically set by each experiment controller -->
+                </thead>
+                <tbody id="table-body">
+                  <tr>
+                    <td colspan="8" class="text-center text-muted">Ready. Adjust circuit controls to log data points.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: INTERACTIVE CONTROLS & DIGITAL MULTIMETER (DMM) -->
+        <div class="workbench-right">
+          <!-- Dynamic Controls Container populated per experiment -->
+          <div id="experiment-controls">
+            <!-- Populated by individual experiment controller JS -->
+          </div>
+
+          <!-- Digital Multimeter (DMM) Physical Chassis -->
+          <div class="dmm-wrapper">
+            <div class="dmm-brand">
+              <span>Simulink Precision DMM</span>
+              <span>Model SX-800</span>
+            </div>
+
+            <div class="dmm-display-bezel">
+              <div class="dmm-top-status">
+                <span id="dmm-mode" class="dmm-badge">DCV</span>
+                <span id="dmm-hold-badge" class="badge badge-warning" style="display: none;">HOLD</span>
+                <span class="text-muted">AUTO RANGE</span>
+              </div>
+              <div class="dmm-lcd-screen">
+                <span id="dmm-screen" class="dmm-readout">0.000</span>
+                <span id="dmm-unit" class="dmm-unit">V</span>
+              </div>
+            </div>
+
+            <!-- DMM Dial Mode Selectors -->
+            <div class="dmm-dial-panel">
+              <button class="dmm-mode-btn active" data-mode="DCV">DC V</button>
+              <button class="dmm-mode-btn" data-mode="ACV">AC V</button>
+              <button class="dmm-mode-btn" data-mode="DCA">DC mA</button>
+              <button class="dmm-mode-btn" data-mode="RES">Ω (Ohms)</button>
+              <button class="dmm-mode-btn" data-mode="DIODE">Diode</button>
+              <button class="dmm-mode-btn" id="dmm-hold-btn">HOLD</button>
+            </div>
+
+            <!-- Banana Probe Ports -->
+            <div class="dmm-probe-ports">
+              <div class="probe-port">
+                <div class="port-jack red"></div>
+                <span class="port-label">V / Ω / mA</span>
+              </div>
+              <div class="probe-port">
+                <div class="port-jack black"></div>
+                <span class="port-label">COM (GND)</span>
+              </div>
+              <div class="probe-port">
+                <div class="port-jack red"></div>
+                <span class="port-label">10A MAX</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 2: LAB MANUAL & THEORY -->
+    <section class="tab-pane" id="tab-theory">
+      <div id="tab-theory-content">
+        <!-- Rendered dynamically from js/data/lab-manuals.js -->
+      </div>
+    </section>
+
+    <!-- TAB 3: VIVA VOCE & QUIZ -->
+    <section class="tab-pane" id="tab-viva">
+      <div id="tab-viva-content">
+        <!-- Rendered dynamically from js/data/viva-questions.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       COMPREHENSIVE USER MANUAL MODAL
+       ========================================================================== -->
+  <div class="modal-overlay" id="user-manual-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="highlight-cyan"><i class="fas fa-compass"></i> Simulink X Studyhub - Complete User Simulation Manual</h3>
+        <button id="btn-close-user-manual-modal" class="btn btn-sm btn-outline">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body user-manual-content">
+        <div class="user-manual-section">
+          <h4><i class="fas fa-info-circle"></i> 1. Introduction to the Virtual Laboratory</h4>
+          <p>Simulink X Studyhub is an interactive electronics engineering simulator designed specifically for undergraduate B.Tech laboratory courses. Every experiment accurately computes physical circuit behaviors based on standard semiconductor physics, differential equations, and Kirchhoff's circuit laws.</p>
+        </div>
+
+        <div class="user-manual-section">
+          <h4><i class="fas fa-list-ol"></i> 2. Step-by-Step Procedure to Run Any Experiment</h4>
+          <ul>
+            <li><strong>Select Experiment:</strong> Use the top-right dropdown menu to pick any of the 8 B.Tech experiments (Ohm's Law, Diode, Rectifier, BJT, RC Filter, Op-Amp, Logic Gates, 555 Timer).</li>
+            <li><strong>Configure Parameters:</strong> Adjust circuit controls on the right panel (Voltage sliders, Resistor values, Capacitor filters, Bias switches).</li>
+            <li><strong>Switch Workbench Views:</strong> Click <em>Circuit Schematic</em> to observe dynamic particle current flow; click <em>Dual-Trace DSO</em> for oscilloscope waveforms; click <em>X-Y Plotter</em> for scientific graphs.</li>
+            <li><strong>Log Observations:</strong> Click <strong>"Add Reading to Table"</strong> to save the current experimental reading into the Observation Table.</li>
+            <li><strong>Plot & Analyze:</strong> Click <strong>"Plot..."</strong> to immediately display the characteristic curve with auto-calculated regression lines and slopes.</li>
+            <li><strong>Export & Report:</strong> Download readings as a standard <code>.csv</code> file or click <strong>"Lab Report"</strong> to generate and print your official graded record sheet.</li>
+          </ul>
+        </div>
+
+        <div class="user-manual-section">
+          <h4><i class="fas fa-wave-square"></i> 3. Operating the Dual-Trace DSO (Oscilloscope)</h4>
+          <ul>
+            <li><strong>Timebase:</strong> Adjust the time per division (0.5 ms to 20 ms/div) to spread or condense waveforms horizontally.</li>
+            <li><strong>Volts/Div:</strong> Scale Channel 1 (Yellow, Input) and Channel 2 (Cyan, Output) vertically for optimum observation.</li>
+            <li><strong>Run / Stop:</strong> Freeze live waveforms at any instant to inspect phase shifts, peak voltages, and harmonic clipping.</li>
+            <li><strong>On-Screen Readouts (OSD):</strong> Automated measurements of \(V_{pp}\), \(V_{rms}\), and timebase are displayed directly at the top and bottom of the CRT screen.</li>
+          </ul>
+        </div>
+
+        <div class="user-manual-section">
+          <h4><i class="fas fa-tachometer-alt"></i> 4. Using the Digital Multimeter (DMM)</h4>
+          <ul>
+            <li>Select measurement mode: <strong>DC V</strong> (DC Voltage), <strong>AC V</strong> (AC RMS Voltage), <strong>DC mA</strong> (Current), <strong>Ω</strong> (Resistance), or <strong>Diode</strong>.</li>
+            <li>Click <strong>HOLD</strong> to lock the active reading on the LCD.</li>
+          </ul>
+        </div>
+
+        <div class="user-manual-section">
+          <h4><i class="fas fa-graduation-cap"></i> 5. Viva Voce & Knowledge Self-Assessment</h4>
+          <p>Switch to the <strong>Viva Voce & Conceptual Quiz</strong> tab at the top. Answer the 5 curated questions for your active experiment, click submit, and receive your instant score along with detailed technical explanations designed to prepare you for laboratory oral examinations.</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" onclick="document.getElementById('user-manual-modal').classList.remove('show')">
+          <i class="fas fa-check"></i> Got It, Return to Workbench
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       STUDENT LAB REPORT GENERATOR MODAL
+       ========================================================================== -->
+  <div class="modal-overlay" id="report-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="highlight-cyan"><i class="fas fa-file-signature"></i> Engineering Lab Record Report</h3>
+        <button id="btn-close-report-modal" class="btn btn-sm btn-outline">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem;">
+          <div>
+            <label style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">Student Full Name:</label>
+            <input type="text" id="report-student-name" class="form-control" value="Aditya Maurya" placeholder="Enter student name">
+          </div>
+          <div>
+            <label style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">Roll / Registration Number:</label>
+            <input type="text" id="report-roll-no" class="form-control" value="2026/BTECH/ECE/042" placeholder="e.g. 2026/ECE/001">
+          </div>
+        </div>
+
+        <div id="report-printable-area" class="report-content">
+          <!-- Populated by app.populateReport() -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-print-report" class="btn btn-primary">
+          <i class="fas fa-print"></i> Print / Save as PDF
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Hub -->
+  <div id="toast-container"></div>
+
+  <!-- ==========================================================================
+       SITE FOOTER (Simulink X Studyhub & Developed by Aditya Maurya)
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <!-- Brand Summary Column -->
+        <div class="footer-col footer-brand">
+          <h3>Simulink X Studyhub</h3>
+          <p class="footer-desc">
+            A state-of-the-art virtual engineering laboratory platform designed for undergraduate B.Tech students. Experience practical, real-life electronics circuit simulation with realistic physical equations, live test benches, dual-trace oscilloscopes, and automated observation plotting.
+          </p>
+          <div class="developer-card">
+            <div class="developer-avatar">AM</div>
+            <div class="developer-info">
+              <span class="dev-label">Lead Architecture & Engineering</span>
+              <span class="dev-name">Developed by Aditya Maurya</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Curriculum Experiments Column 1 -->
+        <div class="footer-col">
+          <h4>Basic & Solid State Labs</h4>
+          <ul class="footer-links">
+            <li><a href="#" data-exp-id="ohms-law"><i class="fas fa-chevron-right text-muted"></i> Ohm's Law & KVL/KCL</a></li>
+            <li><a href="#" data-exp-id="diode-char"><i class="fas fa-chevron-right text-muted"></i> PN & Zener Diode V-I</a></li>
+            <li><a href="#" data-exp-id="rectifier"><i class="fas fa-chevron-right text-muted"></i> Half & Full-Wave Rectifiers</a></li>
+            <li><a href="#" data-exp-id="transistor-ce"><i class="fas fa-chevron-right text-muted"></i> BJT CE Characteristics</a></li>
+          </ul>
+        </div>
+
+        <!-- Curriculum Experiments Column 2 -->
+        <div class="footer-col">
+          <h4>Analog & Digital Labs</h4>
+          <ul class="footer-links">
+            <li><a href="#" data-exp-id="rc-filter"><i class="fas fa-chevron-right text-muted"></i> RC Passive Filters (Bode)</a></li>
+            <li><a href="#" data-exp-id="opamp"><i class="fas fa-chevron-right text-muted"></i> Op-Amp 741 Inverting/Non-Inv</a></li>
+            <li><a href="#" data-exp-id="logic-gates"><i class="fas fa-chevron-right text-muted"></i> Digital TTL Logic Gates</a></li>
+            <li><a href="#" data-exp-id="timer-555"><i class="fas fa-chevron-right text-muted"></i> 555 Astable Multivibrator</a></li>
+          </ul>
+        </div>
+
+        <!-- Curriculum Standards & Tools -->
+        <div class="footer-col">
+          <h4>Engineering Mapping</h4>
+          <p class="text-muted" style="font-size: 0.85rem; line-height: 1.6;">
+            Aligned with national & international undergraduate engineering syllabus (AICTE, IEEE, ABET):
+          </p>
+          <div class="curriculum-badges">
+            <span class="curriculum-badge">ECE-201</span>
+            <span class="curriculum-badge">EEE-202</span>
+            <span class="curriculum-badge">CSE-103</span>
+            <span class="curriculum-badge">IoT & Robotics</span>
+            <span class="curriculum-badge">B.Tech ECE</span>
+          </div>
+          <div style="margin-top: 1rem;">
+            <span class="badge badge-info"><i class="fas fa-bolt"></i> Real Circuit Math Engine</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Copyright Notice -->
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 <span class="footer-bottom-brand">Simulink X Studyhub</span>. All Rights Reserved. Designed for B.Tech Electronics & Electrical Engineering Labs.
+        </div>
+        <div>
+          Developed by <strong>Aditya Maurya</strong>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       JAVASCRIPT MODULES & SCRIPTS
+       ========================================================================== -->
+  <!-- 1. Lab Manual, User Guides & Viva Voce Data -->
+  <script src="js/data/lab-manuals.js"></script>
+  <script src="js/data/user-guides.js"></script>
+  <script src="js/data/viva-questions.js"></script>
+
+  <!-- 2. Mathematics & Virtual Instrument Canvas Engines -->
+  <script src="js/engine/circuit-math.js"></script>
+  <script src="js/engine/oscilloscope.js"></script>
+  <script src="js/engine/graph-plotter.js"></script>
+  <script src="js/engine/circuit-canvas.js"></script>
+  <script src="js/engine/dmm.js"></script>
+
+  <!-- 3. Practical Experiment Controllers -->
+  <script src="js/experiments/ohms-law.js"></script>
+  <script src="js/experiments/diode-char.js"></script>
+  <script src="js/experiments/rectifier.js"></script>
+  <script src="js/experiments/transistor-ce.js"></script>
+  <script src="js/experiments/rc-filter.js"></script>
+  <script src="js/experiments/opamp.js"></script>
+  <script src="js/experiments/logic-gates.js"></script>
+  <script src="js/experiments/timer-555.js"></script>
+
+  <!-- 4. Master Application Controller -->
+  <script src="js/app.js"></script>
+</body>
+</html>
