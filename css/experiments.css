@@ -11,11 +11,19 @@
   grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
   gap: 1.75rem;
   align-items: start;
+  min-width: 0;
+  width: 100%;
+}
+
+.workbench-left,
+.workbench-right {
+  min-width: 0;
+  width: 100%;
 }
 
 @media (max-width: 1150px) {
   .workbench-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
   }
 }
 
@@ -460,17 +468,17 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(4, 8, 17, 0.85);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  z-index: 999;
+  background: rgba(3, 7, 15, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 2000;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.25s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
 }
 
 .modal-overlay.show {
@@ -479,16 +487,18 @@
 }
 
 .modal-dialog {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
+  background: #0b1324;
+  border: 1px solid rgba(0, 242, 254, 0.25);
   border-radius: var(--radius-lg);
   width: 100%;
   max-width: 900px;
-  max-height: 90vh;
+  max-height: 88vh;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 242, 254, 0.12);
   overflow: hidden;
+  position: relative;
+  z-index: 2001;
 }
 
 .modal-header {
@@ -497,7 +507,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(13, 21, 39, 0.95);
+  background: #0e172a;
 }
 
 .modal-header h3 {
@@ -512,6 +522,7 @@
   padding: 1.75rem;
   overflow-y: auto;
   flex: 1;
+  background: #080e1a;
 }
 
 .modal-footer {
@@ -520,7 +531,7 @@
   display: flex;
   justify-content: flex-end;
   gap: 0.85rem;
-  background: rgba(13, 21, 39, 0.95);
+  background: #0e172a;
 }
 
 /* User Manual Documentation Styling */
@@ -532,10 +543,11 @@
 }
 
 .user-manual-section {
-  background: var(--grad-card);
-  border: 1px solid var(--border-color);
+  background: #0f1a2e;
+  border: 1px solid rgba(56, 189, 248, 0.18);
   border-radius: var(--radius-md);
   padding: 1.35rem 1.5rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
 }
 
 .user-manual-section h4 {
