@@ -15,9 +15,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Core Stylesheets -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/instruments.css">
-  <link rel="stylesheet" href="css/experiments.css">
+  <link rel="stylesheet" href="css/style.css?v=2.9">
+  <link rel="stylesheet" href="css/instruments.css?v=2.9">
+  <link rel="stylesheet" href="css/experiments.css?v=2.9">
 </head>
 <body>
 
@@ -27,38 +27,39 @@
   <header class="site-header">
     <div class="header-container">
       <!-- Brand Logo & Name -->
-      <a href="#" class="brand-logo">
+      <a href="#" class="brand-logo" title="Simulink X Studyhub">
         <div class="brand-icon">
           <i class="fas fa-wave-square"></i>
         </div>
         <div class="brand-text">
-          <span class="brand-title">Simulink X Studyhub</span>
+          <span class="brand-title">Simulink X <span class="brand-accent">Studyhub</span></span>
           <span class="brand-tagline">B.Tech Engineering Virtual Circuit Lab</span>
         </div>
       </a>
 
-      <!-- Desktop Navigation Menu -->
+      <!-- Segmented Navigation Menu (Center) -->
       <nav class="header-nav" id="navbar-menu">
         <a href="#simulation" class="nav-link active tab-nav-trigger" data-tab="simulation">
-          <i class="fas fa-microchip"></i> Simulation Lab
+          <i class="fas fa-desktop"></i> <span>Simulation Workbench</span>
         </a>
         <a href="#theory" class="nav-link tab-nav-trigger" data-tab="theory">
-          <i class="fas fa-book-reader"></i> Lab Manual & Theory
+          <i class="fas fa-book-open"></i> <span>Lab Manual & Theory</span>
         </a>
         <a href="#viva" class="nav-link tab-nav-trigger" data-tab="viva">
-          <i class="fas fa-graduation-cap"></i> Viva Voce & Quiz
+          <i class="fas fa-graduation-cap"></i> <span>Viva Voce Quiz</span>
         </a>
-        <a href="#" id="btn-open-user-manual" class="nav-link">
-          <i class="fas fa-compass"></i> User Manual Guide
+        <a href="#" id="mobile-btn-user-manual" class="nav-link mobile-only-link">
+          <i class="fas fa-compass"></i> <span>Complete User Manual</span>
         </a>
-        <button id="btn-generate-report" class="btn btn-sm btn-outline">
-          <i class="fas fa-file-invoice"></i> Lab Report
-        </button>
+        <a href="#" id="mobile-btn-lab-report" class="nav-link mobile-only-link">
+          <i class="fas fa-file-invoice"></i> <span>Generate Lab Report</span>
+        </a>
       </nav>
 
-      <!-- Experiment Switcher & Actions -->
+      <!-- Experiment Switcher & Action Tools -->
       <div class="header-actions">
         <div class="exp-selector-wrap">
+          <i class="fas fa-microchip selector-icon"></i>
           <select id="experiment-selector" aria-label="Select B.Tech Experiment">
             <optgroup label="Basic Electrical & Electronics">
               <option value="ohms-law">Exp 1: Ohm's Law & Circuit Analysis</option>
@@ -79,7 +80,15 @@
           </select>
         </div>
 
-        <button id="btn-fullscreen-toggle" class="btn btn-sm btn-secondary" title="Toggle Fullscreen">
+        <button id="btn-open-user-manual" class="btn btn-sm btn-nav-action" title="Open Complete User Simulation Manual">
+          <i class="fas fa-compass"></i> <span class="nav-btn-text">User Manual</span>
+        </button>
+
+        <button id="btn-generate-report" class="btn btn-sm btn-nav-action btn-report-nav" title="Generate & Print Official Lab Report">
+          <i class="fas fa-file-invoice"></i> <span class="nav-btn-text">Lab Report</span>
+        </button>
+
+        <button id="btn-fullscreen-toggle" class="btn btn-sm btn-icon-only" title="Toggle Fullscreen Mode">
           <i class="fas fa-expand"></i>
         </button>
 
@@ -94,30 +103,20 @@
        MAIN CONTENT CONTAINER
        ========================================================================== -->
   <main class="main-wrapper">
-    <!-- Active Experiment Banner -->
-    <div class="exp-banner">
-      <div class="exp-banner-left">
+    <!-- Streamlined Active Experiment Sub-Bar -->
+    <div class="exp-subbar">
+      <div class="exp-subbar-left">
         <span id="exp-category-badge" class="exp-category-tag">Basic Electrical & Electronics</span>
         <h2 id="exp-header-title" class="exp-main-title">Verification of Ohm's Law and Circuit Analysis</h2>
       </div>
-      <div class="exp-banner-right">
+      <div class="exp-subbar-right">
         <span class="badge badge-live">
-          <i class="fas fa-circle"></i> REAL-TIME SIMULATOR ACTIVE
+          <span class="pulse-indicator"></span> LIVE ENGINE ACTIVE
         </span>
+        <button id="btn-quick-guide" class="btn btn-xs btn-outline" title="Jump to Step-by-Step Simulation Guide">
+          <i class="fas fa-lightbulb highlight-amber"></i> <span>Step Guide</span>
+        </button>
       </div>
-    </div>
-
-    <!-- Navigation Tabs -->
-    <div class="tabs-navigation">
-      <button class="tab-btn active" data-tab="simulation">
-        <i class="fas fa-desktop"></i> Virtual Workbench & Instruments
-      </button>
-      <button class="tab-btn" data-tab="theory">
-        <i class="fas fa-scroll"></i> Lab Manual & Formula Sheet
-      </button>
-      <button class="tab-btn" data-tab="viva">
-        <i class="fas fa-question-circle"></i> Viva Voce & Conceptual Quiz
-      </button>
     </div>
 
     <!-- TAB 1: VIRTUAL WORKBENCH (SIMULATION) -->
@@ -510,6 +509,6 @@
   <script src="js/experiments/timer-555.js"></script>
 
   <!-- 4. Master Application Controller -->
-  <script src="js/app.js"></script>
+  <script src="js/app.js?v=2.8"></script>
 </body>
 </html>
