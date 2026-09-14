@@ -14,22 +14,74 @@
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/logo-icon.png">
+
   <!-- Core Stylesheets -->
-  <link rel="stylesheet" href="css/style.css?v=2.9">
-  <link rel="stylesheet" href="css/instruments.css?v=2.9">
-  <link rel="stylesheet" href="css/experiments.css?v=2.9">
+  <link rel="stylesheet" href="css/style.css?v=3.0">
+  <link rel="stylesheet" href="css/instruments.css?v=3.0">
+  <link rel="stylesheet" href="css/experiments.css?v=3.0">
+  <link rel="stylesheet" href="css/loader.css?v=3.0">
+
+  <!-- Bodymovin / Lottie Animation Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
 </head>
 <body>
+
+  <!-- ==========================================================================
+       FULLSCREEN LAB PRELOADER (Animated via circuit-loader.json)
+       ========================================================================== -->
+  <div id="app-preloader" class="app-preloader" role="progressbar" aria-label="Loading Simulink X Studyhub">
+    <div class="preloader-backdrop"></div>
+    <canvas id="preloader-circuit-canvas" class="preloader-circuit-canvas"></canvas>
+
+    <div class="preloader-content">
+      <div class="preloader-logo-chamber">
+        <div id="preloader-lottie-container" class="preloader-lottie-container"></div>
+        <div class="preloader-glow-ring ring-outer"></div>
+        <div class="preloader-glow-ring ring-inner"></div>
+
+        <div class="preloader-logo-core">
+          <img src="assets/images/logo-icon.png" alt="Simulink S Logo" class="preloader-logo-img">
+          <div class="preloader-scanner-beam"></div>
+        </div>
+      </div>
+
+      <div class="preloader-brand-title">
+        <span class="brand-text-main">SIMULINK <span class="highlight-cyan">X</span></span>
+        <span class="brand-text-sub">STUDYHUB</span>
+      </div>
+      <div class="preloader-tagline">B.Tech Engineering Virtual Circuit Lab</div>
+
+      <div class="preloader-progress-box">
+        <div class="preloader-bar-track">
+          <div id="preloader-bar-fill" class="preloader-bar-fill">
+            <span class="bar-sparkle"></span>
+          </div>
+        </div>
+        <div class="preloader-status-row">
+          <span id="preloader-status-text" class="preloader-status-text">Powering Virtual Laboratory Bus...</span>
+          <span id="preloader-percent-text" class="preloader-percent-text">0%</span>
+        </div>
+      </div>
+
+      <button id="preloader-skip-btn" class="preloader-skip-btn" title="Skip directly to Workbench">
+        Skip Loading <i class="fas fa-forward"></i>
+      </button>
+    </div>
+  </div>
+  <!-- Early Preloader Engine -->
+  <script src="js/engine/loader.js?v=3.0"></script>
 
   <!-- ==========================================================================
        SITE HEADER & NAVBAR (Simulink X Studyhub)
        ========================================================================== -->
   <header class="site-header">
     <div class="header-container">
-      <!-- Brand Logo & Name -->
+      <!-- Brand Logo & Name with Seamless Circuit Emblem -->
       <a href="#" class="brand-logo" title="Simulink X Studyhub">
-        <div class="brand-icon">
-          <i class="fas fa-wave-square"></i>
+        <div class="brand-icon-wrapper">
+          <img src="assets/images/logo-icon.png" alt="Simulink X Studyhub Logo" class="brand-logo-img">
         </div>
         <div class="brand-text">
           <span class="brand-title">Simulink X <span class="brand-accent">Studyhub</span></span>
@@ -417,7 +469,10 @@
       <div class="footer-grid">
         <!-- Brand Summary Column -->
         <div class="footer-col footer-brand">
-          <h3>Simulink X Studyhub</h3>
+          <div class="footer-brand-header">
+            <img src="assets/images/logo-icon.png" alt="Simulink X Studyhub Logo" class="footer-brand-icon">
+            <h3>Simulink X Studyhub</h3>
+          </div>
           <p class="footer-desc">
             A state-of-the-art virtual engineering laboratory platform designed for undergraduate B.Tech students. Experience practical, real-life electronics circuit simulation with realistic physical equations, live test benches, dual-trace oscilloscopes, and automated observation plotting.
           </p>
