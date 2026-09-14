@@ -1,0 +1,360 @@
+/* ==========================================================================
+   SIMULINK X STUDYHUB - FUTURISTIC CIRCUIT PRELOADER (JSON ANIMATED)
+   Developed by Aditya Maurya
+   ========================================================================== */
+
+.app-preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #040711;
+  transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.app-preloader.preloader-exit {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.03);
+  pointer-events: none;
+}
+
+/* Ambient Radial Laboratory Glow */
+.preloader-backdrop {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 45%, rgba(0, 242, 254, 0.12) 0%, rgba(14, 28, 56, 0.6) 40%, rgba(4, 7, 17, 0.96) 80%, #020409 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* High-Performance Canvas for JSON-driven PCB Traces & Electrons */
+.preloader-circuit-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Central Content Container */
+.preloader-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  max-width: 540px;
+  width: 90%;
+  animation: preloaderContentEnter 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes preloaderContentEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Logo Chamber with Animated Glow Rings */
+.preloader-logo-chamber {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.75rem;
+}
+
+.preloader-lottie-container {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Glowing Orbital Rings */
+.preloader-glow-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.preloader-glow-ring.ring-outer {
+  width: 140px;
+  height: 140px;
+  border: 1px dashed rgba(0, 242, 254, 0.35);
+  box-shadow: 0 0 25px rgba(0, 242, 254, 0.15), inset 0 0 20px rgba(0, 242, 254, 0.1);
+  animation: preloaderSpinClockwise 16s linear infinite;
+}
+
+.preloader-glow-ring.ring-inner {
+  width: 118px;
+  height: 118px;
+  border: 1.5px solid rgba(147, 51, 234, 0.35);
+  border-top-color: rgba(0, 242, 254, 0.8);
+  border-bottom-color: rgba(147, 51, 234, 0.8);
+  box-shadow: 0 0 20px rgba(147, 51, 234, 0.2);
+  animation: preloaderSpinCounterClockwise 8s linear infinite;
+}
+
+@keyframes preloaderSpinClockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes preloaderSpinCounterClockwise {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+/* Central Logo Image Holder */
+.preloader-logo-core {
+  position: relative;
+  z-index: 5;
+  width: 96px;
+  height: 96px;
+  border-radius: 20px;
+  background: radial-gradient(circle at 40% 40%, rgba(14, 25, 48, 0.92) 0%, rgba(6, 11, 23, 0.96) 100%);
+  border: 1px solid rgba(0, 242, 254, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7),
+              0 0 30px rgba(0, 242, 254, 0.25),
+              inset 0 0 15px rgba(0, 242, 254, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  animation: preloaderLogoPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes preloaderLogoPulse {
+  0% {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 242, 254, 0.2), inset 0 0 10px rgba(0, 242, 254, 0.08);
+    transform: scale(1);
+  }
+  100% {
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8), 0 0 45px rgba(0, 242, 254, 0.45), inset 0 0 20px rgba(0, 242, 254, 0.25);
+    transform: scale(1.03);
+  }
+}
+
+.preloader-logo-img {
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.65));
+  z-index: 2;
+}
+
+/* Oscilloscope Laser Scanner Beam */
+.preloader-scanner-beam {
+  position: absolute;
+  top: -20%;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 242, 254, 0.8) 50%, transparent 100%);
+  box-shadow: 0 0 12px rgba(0, 242, 254, 0.9);
+  opacity: 0.7;
+  z-index: 3;
+  animation: preloaderScanMove 2.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes preloaderScanMove {
+  0% { top: -10%; opacity: 0; }
+  25% { opacity: 0.85; }
+  50% { top: 100%; opacity: 0.85; }
+  55% { opacity: 0; }
+  100% { top: -10%; opacity: 0; }
+}
+
+/* Brand Title & Typography */
+.preloader-brand-title {
+  font-family: var(--font-sans);
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.35rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.preloader-brand-title .brand-text-sub {
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.preloader-tagline {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 1.75rem;
+}
+
+/* Progress Box */
+.preloader-progress-box {
+  width: 100%;
+  background: rgba(11, 18, 32, 0.85);
+  border: 1px solid rgba(0, 242, 254, 0.2);
+  border-radius: var(--radius-md);
+  padding: 1.15rem 1.35rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 242, 254, 0.05);
+}
+
+.preloader-bar-track {
+  width: 100%;
+  height: 7px;
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 0.85rem;
+}
+
+.preloader-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #9333ea 0%, #00a6ff 50%, #00f2fe 100%);
+  border-radius: 10px;
+  box-shadow: 0 0 14px rgba(0, 242, 254, 0.7);
+  transition: width 0.25s ease-out;
+  position: relative;
+}
+
+.bar-sparkle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 15px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ffffff, 0 0 20px #00f2fe;
+  opacity: 0.9;
+}
+
+.preloader-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  gap: 1rem;
+}
+
+.preloader-status-text {
+  color: #38bdf8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+.preloader-percent-text {
+  color: #00f2fe;
+  font-weight: 700;
+  min-width: 36px;
+  text-align: right;
+}
+
+/* Skip Button */
+.preloader-skip-btn {
+  margin-top: 1.25rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #64748b;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.preloader-skip-btn:hover {
+  color: #e2e8f0;
+  border-color: rgba(0, 242, 254, 0.4);
+  background: rgba(0, 242, 254, 0.08);
+}
+
+/* ==========================================================================
+   NAVBAR BRAND LOGO IMAGE INTEGRATION & HOVER
+   ========================================================================== */
+.brand-icon-wrapper {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: radial-gradient(circle at 35% 35%, rgba(14, 25, 48, 0.95) 0%, rgba(6, 11, 23, 0.98) 100%);
+  border: 1px solid rgba(0, 242, 254, 0.3);
+  box-shadow: 0 0 14px rgba(0, 242, 254, 0.22), inset 0 0 8px rgba(0, 242, 254, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.brand-logo:hover .brand-icon-wrapper {
+  background: radial-gradient(circle at 35% 35%, rgba(16, 32, 64, 0.95) 0%, rgba(8, 14, 30, 0.98) 100%);
+  border-color: rgba(0, 242, 254, 0.6);
+  box-shadow: 0 0 22px rgba(0, 242, 254, 0.5), inset 0 0 12px rgba(0, 242, 254, 0.2);
+  transform: translateY(-1px) scale(1.05);
+}
+
+.brand-logo-img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 4px rgba(0, 242, 254, 0.55));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.brand-logo:hover .brand-logo-img {
+  filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.9));
+  transform: scale(1.08);
+}
+
+/* Footer Brand Logo */
+.footer-brand-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.footer-brand-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px rgba(0, 242, 254, 0.4));
+}
