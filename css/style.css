@@ -129,17 +129,42 @@ body::before {
   flex-shrink: 0;
 }
 
+.brand-icon-wrapper,
 .brand-icon {
-  width: 30px;
-  height: 30px;
-  background: var(--grad-cyan);
-  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+  background: radial-gradient(circle at 35% 35%, rgba(14, 25, 48, 0.95) 0%, rgba(6, 11, 23, 0.98) 100%);
+  border: 1px solid rgba(0, 242, 254, 0.35);
+  border-radius: 9px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #040814;
-  font-size: 0.95rem;
-  box-shadow: 0 0 14px rgba(0, 242, 254, 0.45);
+  box-shadow: 0 0 14px rgba(0, 242, 254, 0.25), inset 0 0 8px rgba(0, 242, 254, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.brand-logo:hover .brand-icon-wrapper,
+.brand-logo:hover .brand-icon {
+  background: radial-gradient(circle at 35% 35%, rgba(16, 32, 64, 0.95) 0%, rgba(8, 14, 30, 0.98) 100%);
+  border-color: rgba(0, 242, 254, 0.65);
+  box-shadow: 0 0 22px rgba(0, 242, 254, 0.55), inset 0 0 12px rgba(0, 242, 254, 0.2);
+  transform: translateY(-1px) scale(1.05);
+}
+
+.brand-logo-img {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 4px rgba(0, 242, 254, 0.6));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.brand-logo:hover .brand-logo-img {
+  filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.95));
+  transform: scale(1.08);
 }
 
 .brand-text {
